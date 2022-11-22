@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="sweetalert.js"></script> -->
+    <script src="script/checkit.js"></script>
+    <title>CheckIt test</title>
+</head>
+<body>
+    <input type="text" id="name" name="name">
+    <input type="number" id="telp" name="telp">
+    <input type="file" id="foto" name="name">
+    <button id="check">Check</button>
+    <script>
+        document.getElementById("check").addEventListener("click", function(){
+            checkIt({
+                rules: {
+                    "name" : "required",
+                    "telp" : "present",
+                    "foto": "required|mimes:jpg,png,svg|lte:6000"
+                },
+                message: {
+                    "name.required_unless": "WOY, masukin datanya!"
+                },
+                callback: {
+                    if_valid: function(){
+                        console.log('hai,all good');
+                    },
+                    if_error: function(){
+                        console.log('hai, there is error')
+                    }
+                }
+            })
+        })
+    </script>
+</body>
+</html>

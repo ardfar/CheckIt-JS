@@ -134,13 +134,13 @@ checkIt({
 #### Position Customization
 This customization only available if you use the `mode: "default"` which means that you don't need to declare the mode. 
 The available position setting of popup position are:
-- top-right => Top-Right corner of your screen
-- top-center => Top of your screen but horizontally centered
-- top-left => Top-Left corner of your screen
-- center => horizontally and vertically centered 
-- bottom-right => Bottom-Right corner of your screen
-- bottom-center => Bottom of your screen but horizontally centered
-- bottom-left => Bottom-Left corner of your screen
+- **top-right** => Top-Right corner of your screen
+- **top-center** => Top of your screen but horizontally centered
+- **top-left** => Top-Left corner of your screen
+- **center** => horizontally and vertically centered 
+- **bottom-right** => Bottom-Right corner of your screen
+- **bottom-center** => Bottom of your screen but horizontally centered
+- **bottom-left** => Bottom-Left corner of your screen
 
 Example:
 ```javascript

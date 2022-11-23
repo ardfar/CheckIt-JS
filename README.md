@@ -345,6 +345,40 @@ example:
 "photo": "mimes:jpg,png,svg,dng"
 ```
 
+## Callback
+CheckIt JS have 3 types of callback. First, general callback that runs after all validations have been done even there is an error. 
+Second, `if_valid` callback that runs if no error detected.
+The last one, `if_error` callback that runs if error detected.  
+Example of generic callback:
+```javascript
+//don't forget the trigger
+checkIt({
+  rules: {
+    "your_input_id" : "rule1|rule2|so on.."
+  },
+  callback: function(){
+    console.log("hello there")
+  }
+})
+```
+Example of `if_valid` and `if_error`:
+```javascript
+//don't forget the trigger
+checkIt({
+  rules: {
+    "your_input_id" : "rule1|rule2|so on.."
+  },
+  callback: {
+    if_valid: function(){
+      console.log('hi,all good');
+    },
+    if_error: function(){
+      console.log('hi, there is error')
+    }
+  }
+})
+```
+ 
 ## Further Development
 Anyway, This version is Beta Version. So, i'll update this code as time goes by. Your feedbacks are so important to me to develop and update this script. 
 Please give this project a star.

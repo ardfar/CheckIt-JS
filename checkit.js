@@ -96,7 +96,7 @@ function checkIt({rules,message={},alert={mode: 'default',position: 'top-right'}
                         }
                         break;
                     case 'numeric':
-                        if (!(isNaN(selector_value))){
+                        if ((isNaN(selector_value))){
                             error.push(custom_msg_checker(selector_id,rule_detail[0],"should be numeric",message));
                         }
                         break;
@@ -648,14 +648,18 @@ function checkIt({rules,message={},alert={mode: 'default',position: 'top-right'}
                             err_pos = "top: 50%;left: 50%; transform: translate(-50%,-50%);"
                             break;
                         default:
-                            err_pos = "top: 10px;right: 20px;"
+                            if (alert['position'].length != 0){
+                                err_pos = alert['position'];
+                            } else {
+                                err_pos = "top: 10px;right: 20px;"
+                            }
                             break;
                     }
                 }
                 if (!(document.getElementById("error_pop_container"))){
                     error_container = document.createElement('div')
                     error_container.id = "error_pop_container"
-                    error_container.style = "position: absolute;width: fit-content;height: fit-content;" + err_pos;
+                    error_container.style = "position: fixed;width: fit-content;height: fit-content;" + err_pos;
                     bodyMain.appendChild(error_container)
                 } else {
                     error_container = document.getElementById('error_pop_container')
@@ -708,10 +712,10 @@ function checkIt({rules,message={},alert={mode: 'default',position: 'top-right'}
         callback();
     }
     if (typeof callback == 'object'){
-        if ((typeof callback['if_valid'] == 'function') && (error.length == 0)){
+        if ((typeof callback['valid'] == 'function') && (error.length == 0)){
             callback['if_valid']()
         }
-        if ((typeof callback['if_error'] == 'function') && (error.length != 0)){
+        if ((typeof callback['error'] == 'function') && (error.length != 0)){
             callback['if_error']();
         }
     }
